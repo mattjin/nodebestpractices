@@ -4,9 +4,6 @@
 
 我们经常看到开发者使用`CMD 'npm start'`启动app的代码示例。这是一个不好的做法。`npm`应用不会向您的app转发信号（signals），这将阻止应用优雅关闭（graceful shutdown），（见[/sections/docker/graceful-shutdown.chinese.md]）。如果您使用的是子进程（child-processes），则在意外关闭时无法正确清理它们，将僵尸进程留在主机上。`npm start`也导致无意义的增加一个额外进程。使用`CMD ['node','server.js']`启动您的应用吧。假如您的应用使用了子进程（child-processes），也可以使用`TINI`作为入口。
 
-
-  We are used to see code examples where folks start their app using `CMD 'npm start'`. This is a bad practice. The `npm` binary will not forward signals to your app which prevents graceful shutdown (see [/sections/docker/graceful-shutdown.md]). If you are using Child-processes they won’t be cleaned up correctly in case of unexpected shutdown, leaving zombie processes on your host. `npm start` also results in having an extra process for no benefit. To start you app use `CMD ['node','server.js']`. If your app spawns child-processes also use `TINI` as an entrypoint.
-
 ### 代码示例 - 启动Node
 
 ```dockerfile
