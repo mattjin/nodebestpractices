@@ -1187,6 +1187,33 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "forresst",
+      "name": "Forresst",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/163352?v=4",
+      "profile": "https://twitter.com/forresst17",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "svenheden",
+      "name": "Jonathan Svenheden",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/76098?v=4",
+      "profile": "https://github.com/svenheden",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "AustrisC",
+      "name": "AustrisC",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/12381652?v=4",
+      "profile": "https://github.com/AustrisC",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "nodebestpractices",
