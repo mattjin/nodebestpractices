@@ -19,8 +19,10 @@ Let's imagine the following directory structure
   - README.md
 ```
 
-Your [.dockerignore](/sections/docker/dockerignore.md) will already filter out files that won't be needed for building and running your application.
+Your [.dockerignore](../docker/docker-ignore.md) will already filter out files that won't be needed for building and running your application.
 
+
+sections/docker/docker-ignore.md
 ```
 # Don't copy in existing node_modules, we'll fetch our own
 node_modules
@@ -38,6 +40,7 @@ FROM node:14.4.0 AS build
 
 COPY --chown=node:node . .
 RUN yarn install --frozen-lockfile && yarn build
+
 
 FROM node:14.4.0
 
@@ -58,6 +61,7 @@ FROM node:14.4.0 AS build
 
 COPY --chown=node:node . .
 RUN yarn install --frozen-lockfile && yarn build
+
 
 # This will use a minimal base image for the runtime
 FROM node:14.4.0-alpine
@@ -95,6 +99,7 @@ COPY --chown=node:node src ./src
 
 # Build code
 RUN yarn build
+
 
 # Run-time stage
 FROM node:14.4.0-alpine
