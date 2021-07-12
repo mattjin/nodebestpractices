@@ -1,4 +1,4 @@
-# 保护和重启你的失败进程（用正确的工具）
+# 保护和重启失败进程（用正确的工具）
 
 <br/><br/>
 
@@ -12,8 +12,8 @@
 
 ### 其它博主说了什么
 
-* 来自[Express 生成最佳实践](https://expressjs.com/en/advanced/best-practice-performance.html):
-> ... 在开发中，您只需从命令行使用node.js或类似的东西启动您的应用程序。**但是在生产中这样做是一种灾难。 如果应用程序崩溃，它将掉线**，直到您重新启动它。要确保应用程序在崩溃时重新启动，请使用进程管理器。流程管理器是便于部署的应用程序的“容器”，提供高可用性，并使您能够在运行时管理应用程序。
+* 来自[Express 上线最佳实践](https://expressjs.com/en/advanced/best-practice-performance.html):
+> ... 在开发中，您只需从命令行使用node.js或类似的东西启动您的应用程序。**但是在生产中这样做是一种灾难。 如果应用程序崩溃，它将掉线**，直到您重新启动它。要确保应用程序在崩溃时重新启动，请使用进程管理器。流程管理器是便于部署应用程序的“容器”，提供高可用性，并使您能够在运行时管理应用程序。
 
 * 摘自 the Medium blog post [了解节点集群](https://medium.com/@CodeAndBiscuits/understanding-nodejs-clustering-in-docker-land-64ce2306afef#.cssigr5z3):
-> ...了解Docker-Land中的NodeJS集群“Docker容器”是流线型的轻量级虚拟环境，旨在将流程简化为最低限度。管理和协调自己资源的流程不再有价值。**相反，像Kubernetes，Mesos和Cattle这样的管理层已经普及了这些资源应该在整个基础设施范围进行管理的概念**。CPU和内存资源由“调度器”分配，网络资源由堆栈提供的负载均衡器管理。
+> ...了解Docker-Land中的NodeJS集群，“Docker容器”是流线型的轻量级虚拟环境，旨在将流程简化为最低限度。管理和协调自己资源的流程不再有价值。**相反，像Kubernetes，Mesos和Cattle这样的管理层已经普及了这些资源应该在整个基础设施范围进行管理的概念**。CPU和内存资源由“调度器”分配，网络资源由堆栈提供的（stack-provided）负载均衡器管理。

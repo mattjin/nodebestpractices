@@ -3,23 +3,22 @@
 # Node.js Best Practices
 
 <h1 align="center">
-  <img src="assets/images/banner-2.jpg" alt="Node.js Best Practices">
+  <img src="assets/images/banner-2.jpg" alt="Node.js Best Practices"/>
 </h1>
 
 <br/>
 
 <div align="center">
-  <img src="https://img.shields.io/badge/⚙%20Item%20count%20-%20102%20Best%20Practices-blue.svg" alt="102 items"> <img src="https://img.shields.io/badge/%F0%9F%93%85%20Last%20update%20-%20December%2012%202020-green.svg" alt="Last update: November, 2020"> <img src="https://img.shields.io/badge/ %E2%9C%94%20Updated%20For%20Version%20-%20Node%2014.0.0-brightgreen.svg" alt="Updated for Node 14.0.0">
+  <img src="https://img.shields.io/badge/⚙%20Item%20count%20-%20102%20Best%20Practices-blue.svg" alt="102 items"/> <img id="last-update-badge" src="https://img.shields.io/badge/%F0%9F%93%85%20Last%20update%20-%20July%2004%2C%202021-green.svg" alt="Last update: July 04, 2021" /> <img src="https://img.shields.io/badge/ %E2%9C%94%20Updated%20For%20Version%20-%20Node%2014.0.0-brightgreen.svg" alt="Updated for Node 14.0.0"/>
 </div>
 
 <br/>
 
 [![nodepractices](/assets/images/twitter-s.png)](https://twitter.com/nodepractices/) **Follow us on Twitter!** [**@nodepractices**](https://twitter.com/nodepractices/)
 
-
 <br/>
 
-Read in a different language: [![CN](/assets/flags/CN.png)**CN**](/README.chinese.md), [![BR](/assets/flags/BR.png)**BR**](/README.brazilian-portuguese.md), [![RU](/assets/flags/RU.png)**RU**](/README.russian.md), [![PL](/assets/flags/PL.png)**PL**](/README.polish.md) [(![ES](/assets/flags/ES.png)**ES**, ![FR](/assets/flags/FR.png)**FR**, ![HE](/assets/flags/HE.png)**HE**, ![KR](/assets/flags/KR.png)**KR** and ![TR](/assets/flags/TR.png)**TR** in progress!)](#translations)
+Read in a different language: [![CN](/assets/flags/CN.png)**CN**](/README.chinese.md), [![FR](/assets/flags/FR.png)**FR**](/README.french.md), [![BR](/assets/flags/BR.png)**BR**](/README.brazilian-portuguese.md), [![RU](/assets/flags/RU.png)**RU**](/README.russian.md), [![PL](/assets/flags/PL.png)**PL**](/README.polish.md), [![JA](/assets/flags/JA.png)**JA**](/README.japanese.md), [![EU](/assets/flags/EU.png)**EU**](/README.basque.md) [(![ES](/assets/flags/ES.png)**ES**, ![HE](/assets/flags/HE.png)**HE**, ![KR](/assets/flags/KR.png)**KR** and ![TR](/assets/flags/TR.png)**TR** in progress! )](#translations)
 
 <br/>
 
@@ -27,12 +26,11 @@ Read in a different language: [![CN](/assets/flags/CN.png)**CN**](/README.chines
 
 # Latest Best Practices and News
 
-- **✅ New best practice:** Bullet 2.12 by [Alexsey](https://github.com/Alexsey) shows how returning without awaiting to async functions leads to partial stacktraces. This might become a big deal when troubleshooting exceptions in productions that lack some of the execution frames
+- **![FR](/assets/flags/FR.png) French translation!1! :** The latest translation that joins our international guide is French. Bienvenue
 
-- **✅ New best practice:** Bullet 6.8 by Josh Hemphill recommends "Protect Users' Passwords/Secrets using BCrypt or Script". It contains an in-depth explanation about when and why each option suits a specific project. Don't miss this short guide with a brief overview of the various hashing options
+- **🇯🇵 Japanese translation:** Our guide is now also translated to Japanese! Courtesy of the amazing [YukiOta](https://github.com/YukiOta) and [Yuta Azumi](https://github.com/YA21)
 
-- **:whale: Node.js + Docker best practices**: We've just released the Docker with Node.js section which includes 15 bullets about better coding techniques with Docker
-
+- **🎊 60,000 stars!**: Our repo was starred and trusted by 60,100 developers. We're speechless
 
 <br/><br/>
 
@@ -49,7 +47,7 @@ Read in a different language: [![CN](/assets/flags/CN.png)**CN**](/README.chines
 ## Table of Contents
 
 1. [Project Structure Practices (5)](#1-project-structure-practices)
-2. [Error Handling Practices (11) ](#2-error-handling-practices)
+2. [Error Handling Practices (12) ](#2-error-handling-practices)
 3. [Code Style Practices (12) ](#3-code-style-practices)
 4. [Testing And Overall Quality Practices (13) ](#4-testing-and-overall-quality-practices)
 5. [Going To Production Practices (19) ](#5-going-to-production-practices)
@@ -127,7 +125,7 @@ Read in a different language: [![CN](/assets/flags/CN.png)**CN**](/README.chines
 
 ## ![✔] 2.2 Use only the built-in Error object
 
-**TL;DR:** Many throw errors as a string or as some custom type – this complicates the error handling logic and the interoperability between modules. Whether you reject a promise, throw an exception or emit an error – using only the built-in Error object (or an object that extends the built-in Error object) will increase uniformity and prevent loss of information
+**TL;DR:** Many throw errors as a string or as some custom type – this complicates the error handling logic and the interoperability between modules. Whether you reject a promise, throw an exception or emit an error – using only the built-in Error object (or an object that extends the built-in Error object) will increase uniformity and prevent loss of information. There is `no-throw-literal` ESLint rule that strictly checks that (although it have some [limitations](https://eslint.org/docs/rules/no-throw-literal) which can be solved when using TypeScript and setting the `@typescript-eslint/no-throw-literal` rule)
 
 **Otherwise:** When invoking some component, being uncertain which type of errors come in return – it makes proper error handling much harder. Even worse, using custom types to describe errors might lead to loss of critical error information like the stack trace!
 
@@ -322,7 +320,7 @@ const count = 2 // it tries to run 2(), but 2 is not a function
 (function doSomething() {
   // do something amazing
 }())
-// put a semicolon before the immediate invoked function, after the const definition, save the return value of the anonymous function to a variable or avoid IIFEs alltogether
+// put a semicolon before the immediate invoked function, after the const definition, save the return value of the anonymous function to a variable or avoid IIFEs altogether
 ```
 
 🔗 [**Read more:** "Semi ESLint rule"](https://eslint.org/docs/rules/semi)
@@ -342,7 +340,7 @@ const count = 2 // it tries to run 2(), but 2 is not a function
 
 **TL;DR:** Use **_lowerCamelCase_** when naming constants, variables and functions and **_UpperCamelCase_** (capital first letter as well) when naming classes. This will help you to easily distinguish between plain variables/functions, and classes that require instantiation. Use descriptive names, but try to keep them short
 
-**Otherwise:** Javascript is the only language in the world that allows invoking a constructor ("Class") directly without instantiating it first. Consequently, Classes and function-constructors are differentiated by starting with UpperCamelCase
+**Otherwise:** JavaScript is the only language in the world that allows invoking a constructor ("Class") directly without instantiating it first. Consequently, Classes and function-constructors are differentiated by starting with UpperCamelCase
 
 ### 3.6 Code Example
 
@@ -352,7 +350,7 @@ class SomeClassExample {}
 
 // for const names we use the const keyword and lowerCamelCase
 const config = {
-  key: "value"
+  key: "value",
 };
 
 // for variables and functions names we use lowerCamelCase
@@ -453,7 +451,7 @@ All statements above will return false if used with `===`
 
 ## ![✔] 4.1 At the very least, write API (component) testing
 
-**TL;DR:** Most projects just don't have any automated testing due to short timetables or often the 'testing project' ran out of control and was abandoned. For that reason, prioritize and start with API testing which is the easiest way to write and provides more coverage than unit testing (you may even craft API tests without code using tools like [Postman](https://www.getpostman.com/). Afterward, should you have more resources and time, continue with advanced test types like unit testing, DB testing, performance testing, etc
+**TL;DR:** Most projects just don't have any automated testing due to short timetables or often the 'testing project' ran out of control and was abandoned. For that reason, prioritize and start with API testing which is the easiest way to write and provides more coverage than unit testing (you may even craft API tests without code using tools like [Postman](https://www.getpostman.com/)). Afterward, should you have more resources and time, continue with advanced test types like unit testing, DB testing, performance testing, etc
 
 **Otherwise:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
 
@@ -523,7 +521,7 @@ All statements above will return false if used with `===`
 
 ## ![✔] 4.9 Inspect for outdated packages
 
-**TL;DR:** Use your preferred tool (e.g. 'npm outdated' or [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) to detect installed outdated packages, inject this check into your CI pipeline and even make a build fail in a severe scenario. For example, a severe scenario might be when an installed package is 5 patch commits behind (e.g. local version is 1.3.1 and repository version is 1.3.8) or it is tagged as deprecated by its author - kill the build and prevent deploying this version
+**TL;DR:** Use your preferred tool (e.g. `npm outdated` or [npm-check-updates](https://www.npmjs.com/package/npm-check-updates)) to detect installed outdated packages, inject this check into your CI pipeline and even make a build fail in a severe scenario. For example, a severe scenario might be when an installed package is 5 patch commits behind (e.g. local version is 1.3.1 and repository version is 1.3.8) or it is tagged as deprecated by its author - kill the build and prevent deploying this version
 
 **Otherwise:** Your production will run packages that have been explicitly tagged by their author as risky
 
@@ -549,7 +547,7 @@ All statements above will return false if used with `===`
 
 ## ![✔] 4.12 Carefully choose your CI platform (Jenkins vs CircleCI vs Travis vs Rest of the world)
 
-**TL;DR:** Your continuous integration platform (CICD) will host all the quality tools (e.g test, lint) so it should come with a vibrant ecosystem of plugins. [Jenkins](https://jenkins.io/) used to be the default for many projects as it has the biggest community along with a very powerful platform at the price of a complex setup that demands a steep learning curve. Nowadays, it has become much easier to set up a CI solution using SaaS tools like [CircleCI](https://circleci.com) and others. These tools allow crafting a flexible CI pipeline without the burden of managing the whole infrastructure. Eventually, it's a trade-off between robustness and speed - choose your side carefully
+**TL;DR:** Your continuous integration platform (CICD) will host all the quality tools (e.g. test, lint) so it should come with a vibrant ecosystem of plugins. [Jenkins](https://jenkins.io/) used to be the default for many projects as it has the biggest community along with a very powerful platform at the price of a complex setup that demands a steep learning curve. Nowadays, it has become much easier to set up a CI solution using SaaS tools like [CircleCI](https://circleci.com) and others. These tools allow crafting a flexible CI pipeline without the burden of managing the whole infrastructure. Eventually, it's a trade-off between robustness and speed - choose your side carefully
 
 **Otherwise:** Choosing some niche vendor might get you blocked once you need some advanced customization. On the other hand, going with Jenkins might burn precious time on infrastructure setup
 
@@ -631,7 +629,7 @@ All statements above will return false if used with `===`
 
 ## ![✔] 5.7. Create a ‘maintenance endpoint’
 
-**TL;DR:** Expose a set of system-related information, like memory usage and REPL, etc in a secured API. Although it’s highly recommended to rely on standard and battle-tests tools, some valuable information and operations are easier done using code
+**TL;DR:** Expose a set of system-related information, like memory usage and REPL, etc in a secured API. Although it’s highly recommended to rely on standard and battle-tested tools, some valuable information and operations are easier done using code
 
 **Otherwise:** You’ll find that you’re performing many “diagnostic deploys” – shipping code to production only to extract some information for diagnostic purposes
 
@@ -641,7 +639,7 @@ All statements above will return false if used with `===`
 
 ## ![✔] 5.8. Discover errors and downtime using APM products
 
-**TL;DR:** Application monitoring and performance products (a.k.a APM) proactively gauge codebase and API so they can auto-magically go beyond traditional monitoring and measure the overall user-experience across services and tiers. For example, some APM products can highlight a transaction that loads too slow on the end-users side while suggesting the root cause
+**TL;DR:** Application monitoring and performance products (a.k.a. APM) proactively gauge codebase and API so they can auto-magically go beyond traditional monitoring and measure the overall user-experience across services and tiers. For example, some APM products can highlight a transaction that loads too slow on the end-user's side while suggesting the root cause
 
 **Otherwise:** You might spend great effort on measuring API performance and downtimes, probably you’ll never be aware which is your slowest code parts under real-world scenario and how these affect the UX
 
@@ -701,7 +699,9 @@ All statements above will return false if used with `===`
 
 ## ![✔] 5.14. Assign a transaction id to each log statement
 
-**TL;DR:** Assign the same identifier, transaction-id: {some value}, to each log entry within a single request. Then when inspecting errors in logs, easily conclude what happened before and after. Unfortunately, this is not easy to achieve in Node due to its async nature, see code examples inside
+Also known as correlation id / transit id / tracing id / request id / request context / etc.
+
+**TL;DR:** Assign the same identifier, transaction-id: {some value}, to each log entry within a single request. Then when inspecting errors in logs, easily conclude what happened before and after. Until version 14 of Node, this was not easy to achieve due to Node's async nature, but since AsyncLocalStorage came to town, this became possible and easy than ever. see code examples inside
 
 **Otherwise:** Looking at a production error log without the context – what happened before – makes it much harder and slower to reason about the issue
 
@@ -709,9 +709,9 @@ All statements above will return false if used with `===`
 
 <br/><br/>
 
-## ![✔] 5.15. Set NODE_ENV=production
+## ![✔] 5.15. Set `NODE_ENV=production`
 
-**TL;DR:** Set the environment variable NODE_ENV to ‘production’ or ‘development’ to flag whether production optimizations should get activated – many npm packages determine the current environment and optimize their code for production
+**TL;DR:** Set the environment variable `NODE_ENV` to ‘production’ or ‘development’ to flag whether production optimizations should get activated – many npm packages determine the current environment and optimize their code for production
 
 **Otherwise:** Omitting this simple property might greatly degrade performance. For example, when using Express for server-side rendering omitting `NODE_ENV` makes it slower by a factor of three!
 
@@ -747,7 +747,7 @@ All statements above will return false if used with `===`
 
 <br/><br/>
 
-## ![✔] 5.19. Install your packages with `npm ci` 
+## ![✔] 5.19. Install your packages with `npm ci`
 
 **TL;DR:** You have to be sure that production code uses the exact version of the packages you have tested it with. Run `npm ci` to strictly do a clean install of your dependencies matching package.json and package-lock.json. Using this command is recommended in automated environments such as continuous integration pipelines.
 
@@ -845,7 +845,7 @@ All statements above will return false if used with `===`
 
 <br/><br/>
 
-## ![✔] 6.8. Protect Users' Passwords/Secrets using brypt or scrypt
+## ![✔] 6.8. Protect Users' Passwords/Secrets using bcrypt or scrypt
 
 <a href="https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication" target="_blank"><img src="https://img.shields.io/badge/%E2%9C%94%20OWASP%20Threats%20-%20A9:Broken%20Authentication%20-green.svg" alt=""/></a>
 
@@ -881,15 +881,15 @@ All statements above will return false if used with `===`
 
 <br/><br/>
 
-## ![✔] 6.11. Support blacklisting JWTs
+## ![✔] 6.11. Support blocklisting JWTs
 
 <a href="https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication" target="_blank"><img src="https://img.shields.io/badge/%E2%9C%94%20OWASP%20Threats%20-%20A9:Broken%20Authentication%20-green.svg" alt=""/></a>
 
-**TL;DR:** When using JSON Web Tokens (for example, with [Passport.js](https://github.com/jaredhanson/passport)), by default there's no mechanism to revoke access from issued tokens. Once you discover some malicious user activity, there's no way to stop them from accessing the system as long as they hold a valid token. Mitigate this by implementing a blacklist of untrusted tokens that are validated on each request.
+**TL;DR:** When using JSON Web Tokens (for example, with [Passport.js](https://github.com/jaredhanson/passport)), by default there's no mechanism to revoke access from issued tokens. Once you discover some malicious user activity, there's no way to stop them from accessing the system as long as they hold a valid token. Mitigate this by implementing a blocklist of untrusted tokens that are validated on each request.
 
 **Otherwise:** Expired, or misplaced tokens could be used maliciously by a third party to access an application and impersonate the owner of the token.
 
-🔗 [**Read More: Blacklist JSON Web Tokens**](/sections/security/expirejwt.md)
+🔗 [**Read More: Blocklist JSON Web Tokens**](/sections/security/expirejwt.md)
 
 <br/><br/>
 
@@ -1052,7 +1052,7 @@ All statements above will return false if used with `===`
 
 <a href="https://www.owasp.org/index.php/Top_10-2017_A6-Security_Misconfiguration" target="_blank"><img src="https://img.shields.io/badge/%E2%9C%94%20OWASP%20Threats%20-%20A6:Security%20Misconfiguration%20-green.svg" alt=""/></a>
 
-**TL;DR:** Precautions should be taken to avoid the risk of accidentally publishing secrets to public npm registries. An `.npmignore` file can be used to blacklist specific files or folders, or the `files` array in `package.json` can act as a whitelist.
+**TL;DR:** Precautions should be taken to avoid the risk of accidentally publishing secrets to public npm registries. An `.npmignore` file can be used to ignore specific files or folders, or the `files` array in `package.json` can act as an allow list.
 
 **Otherwise:** Your project's API keys, passwords or other secrets are open to be abused by anyone who comes across them, which may result in financial loss, impersonation, and other risks.
 
@@ -1110,6 +1110,7 @@ FROM node:14.4.0 AS build
 COPY . .
 RUN npm ci && npm run build
 
+
 FROM node:slim-14.4.0
 
 USER node
@@ -1125,9 +1126,9 @@ CMD [ "node", "dist/app.js" ]
 
 <br /><br /><br />
 
-## ![✔] 8.2. Bootstrap using 'node' command, avoid npm start
+## ![✔] 8.2. Bootstrap using `node` command, avoid `npm start`
 
-**TL;DR:** use `CMD ['node','server.js']` to start your app, avoid using npm scripts which don't pass OS signals to the code. This prevents problems with child-process, signal handling, graceful shutdown and having zombie processes.
+**TL;DR:** use `CMD ['node','server.js']` to start your app, avoid using npm scripts which don't pass OS signals to the code. This prevents problems with child-processes, signal handling, graceful shutdown and having zombie processes.
 
 **Otherwise:** When no signals are passed, your code will never be notified about shutdowns. Without this, it will lose its chance to close properly possibly losing current requests and/or data.
 
@@ -1233,7 +1234,7 @@ In addition, referring to an image tag means that the base image is subject to c
 
 **Otherwise:** Your code might be entirely free from vulnerabilities. However it might still get hacked due to vulnerable version of OS-level binaries (e.g. OpenSSL, TarBall) that are commonly being used by applications
 
-🔗 [**Read More: Generic Docker practices**](/sections/docker/scan-images.md)
+🔗 [**Read More: Scan the entire image before production**](/sections/docker/scan-images.md)
 
 <br /><br /><br />
 
@@ -1254,7 +1255,6 @@ In addition, referring to an image tag means that the base image is subject to c
 🔗 [**Read More: Generic Docker practices**](/sections/docker/generic-tips.md)
 
 <br/><br /><br />
-
 
 ## ![✔] 8.15. Lint your Dockerfile
 
@@ -1284,10 +1284,12 @@ All translations are contributed by the community. We will be happy to get any h
 - ![CN](/assets/flags/CN.png) [Chinese](./README.chinese.md) - Courtesy of [Matt Jin](https://github.com/mattjin)
 - ![RU](/assets/flags/RU.png) [Russian](./README.russian.md) - Courtesy of [Alex Ivanov](https://github.com/contributorpw)
 - ![PL](/assets/flags/PL.png) [Polish](./README.polish.md) - Courtesy of [Michal Biesiada](https://github.com/mbiesiad)
+- ![JA](/assets/flags/JA.png) [Japanese](./README.japanese.md) - Courtesy of [Yuki Ota](https://github.com/YukiOta), [Yuta Azumi](https://github.com/YA21)
+- ![EU](/assets/flags/EU.png) [Basque](README.basque.md) - Courtesy of [Ane Diaz de Tuesta](https://github.com/anediaz) & Joxefe Diaz de Tuesta
 
 ### Translations in progress
 
-- ![FR](/assets/flags/FR.png) [French](https://github.com/gaspaonrocks/nodebestpractices/blob/french-translation/README.french.md) ([Discussion](https://github.com/goldbergyoni/nodebestpractices/issues/129))
+- ![FR](/assets/flags/FR.png) [French](https://github.com/goldbergyoni/nodebestpractices/blob/master/README.french.md) ([Discussion](https://github.com/goldbergyoni/nodebestpractices/issues/129))
 - ![HE](/assets/flags/HE.png) Hebrew ([Discussion](https://github.com/goldbergyoni/nodebestpractices/issues/156))
 - ![KR](/assets/flags/KR.png) [Korean](README.korean.md) - Courtesy of [Sangbeom Han](https://github.com/uronly14me) ([Discussion](https://github.com/goldbergyoni/nodebestpractices/issues/94))
 - ![ES](/assets/flags/ES.png) [Spanish](https://github.com/goldbergyoni/nodebestpractices/blob/spanish-translation/README.spanish.md) ([Discussion](https://github.com/goldbergyoni/nodebestpractices/issues/95))
@@ -1297,9 +1299,9 @@ All translations are contributed by the community. We will be happy to get any h
 
 ## Steering Committee
 
-Meet the steering committee members - the people who work together to provide guidance and future direction to the project. In addition, each member of the committee leads a project tracked under our [Github projects](https://github.com/goldbergyoni/nodebestpractices/projects).
+Meet the steering committee members - the people who work together to provide guidance and future direction to the project. In addition, each member of the committee leads a project tracked under our [GitHub projects](https://github.com/goldbergyoni/nodebestpractices/projects).
 
-<img align="left" width="100" height="100" src="assets/images/members/yoni.png">
+<img align="left" width="100" height="100" src="assets/images/members/yoni.png"/>
 
 [Yoni Goldberg](https://github.com/goldbergyoni)
 <a href="https://twitter.com/goldbergyoni"><img src="assets/images/twitter-s.png" width="16" height="16"></img></a>
@@ -1309,7 +1311,7 @@ Independent Node.js consultant who works with customers in the USA, Europe, and 
 
 <br/>
 
-<img align="left" width="100" height="100" src="assets/images/members/bruno.png">
+<img align="left" width="100" height="100" src="assets/images/members/bruno.png"/>
 
 [Bruno Scheufler](https://github.com/BrunoScheufler)
 <a href="https://brunoscheufler.com/"><img src="assets/images/www.png" width="16" height="16"></img></a>
@@ -1318,7 +1320,7 @@ Independent Node.js consultant who works with customers in the USA, Europe, and 
 
 <br/>
 
-<img align="left" width="100" height="100" src="assets/images/members/kyle.png">
+<img align="left" width="100" height="100" src="assets/images/members/kyle.png"/>
 
 [Kyle Martin](https://github.com/js-kyle)
 <a href="https://twitter.com/kylemartin_93"><img src="assets/images/twitter-s.png" width="16" height="16"></img></a>
@@ -1328,7 +1330,7 @@ Full Stack Developer & Site Reliability Engineer based in New Zealand, intereste
 
 <br/>
 
-<img align="left" width="100" height="100" src="assets/images/members/kevyn.png">
+<img align="left" width="100" height="100" src="assets/images/members/kevyn.png"/>
 
 [Kevyn Bruyere](https://github.com/kevynb)
 <a href="https://www.linkedin.com/in/kevynbruyere/"><img src="assets/images/linkedin.png" width="16" height="16"></img></a>
@@ -1339,7 +1341,7 @@ Independent full-stack developer with a taste for Ops and automation.
 
 ### Steering Committee Emeriti
 
-<img align="left" width="100" height="100" src="assets/images/members/sagir.png">
+<img align="left" width="100" height="100" src="assets/images/members/sagir.png"/>
 
 [Sagir Khan](https://github.com/sagirk)
 <a href="https://twitter.com/sagir_k"><img src="assets/images/twitter-s.png" width="16" height="16"></img></a>
@@ -1356,19 +1358,20 @@ Thank you to all our collaborators! 🙏
 
 Our collaborators are members who are contributing to the repository on a regular basis, through suggesting new best practices, triaging issues, reviewing pull requests and more. If you are interested in helping us guide thousands of people to craft better Node.js applications, please read our [contributor guidelines](/.operations/CONTRIBUTING.md) 🎉
 
-| <a href="https://github.com/idori" target="_blank"><img src="assets/images/members/ido.png" width="75" height="75"></a> | <a href="https://github.com/TheHollidayInn" target="_blank"><img src="assets/images/members/keith.png" width="75" height="75"></a> |
-| :---------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: |
-|                                    [Ido Richter (Founder)](https://github.com/idori)                                    |                                        [Keith Holliday](https://github.com/TheHollidayInn)                                         |
+| <a href="https://github.com/idori" target="_blank"><img src="assets/images/members/ido.png" width="75" height="75"/></a> | <a href="https://github.com/TheHollidayInn" target="_blank"><img src="assets/images/members/keith.png" width="75" height="75"/></a> | <a href="https://github.com/rluvaton" target="_blank"><img src="assets/images/members/raz-luvaton.jpg" width="75" height="75" alt="Raz Luvaton" loading="lazy"/></a> | <a href="https://github.com/josh-hemphill" target="_blank"><img src="assets/images/members/jhemphill.jpg" width="75" height="75" alt="Josh Hemphill" loading="lazy"/></a> |
+| :--: | :--: | :--: | :--: |
+| [Ido Richter (Founder)](https://github.com/idori) | [Keith Holliday](https://github.com/TheHollidayInn) | [Raz Luvaton](https://github.com/rluvaton) | [Josh Hemphill](https://github.com/josh-hemphill) |
 
 ### Collaborator Emeriti
 
-| <a href="https://github.com/refack" target="_blank"><img src="assets/images/members/refael.png" width="50" height="50"></a> |
+| <a href="https://github.com/refack" target="_blank"><img src="assets/images/members/refael.png" width="50" height="50"/></a> |
 | :-------------------------------------------------------------------------------------------------------------------------: |
 |                                        [Refael Ackermann](https://github.com/refack)                                        |
 
 <br/>
 
 ## Contributing
+
 If you've ever wanted to contribute to open source, now is your chance! See the [contributing docs](.operations/CONTRIBUTING.md) for more information.
 
 ## Contributors ✨
@@ -1538,7 +1541,7 @@ Thanks goes to these wonderful people who have contributed to this repository!
     <td align="center"><a href="https://github.com/13luismb"><img src="https://avatars1.githubusercontent.com/u/32210483?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luis A. Acurero</b></sub></a><br /><a href="#translation-13luismb" title="Translation">🌍</a></td>
     <td align="center"><a href="https://lromano97.github.io/"><img src="https://avatars1.githubusercontent.com/u/22394847?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lucas Romano</b></sub></a><br /><a href="#translation-lromano97" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/denisecase"><img src="https://avatars0.githubusercontent.com/u/13016516?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Denise Case</b></sub></a><br /><a href="#content-denisecase" title="Content">🖋</a></td>
-    <td align="center"><a href="http://stackoverflow.com/story/elektronik"><img src="https://avatars3.githubusercontent.com/u/1078554?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nick Ribal</b></sub></a><br /><a href="#content-elektronik2k5" title="Content">🖋</a></td>
+    <td align="center"><a href="http://stackoverflow.com/story/elektronik"><img src="https://avatars3.githubusercontent.com/u/1078554?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nick Ribal</b></sub></a><br /><a href="#content-elektronik2k5" title="Content">🖋</a> <a href="https://github.com/goldbergyoni/nodebestpractices/pulls?q=is%3Apr+reviewed-by%3Aelektronik2k5" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/0xflotus"><img src="https://avatars3.githubusercontent.com/u/26602940?v=4?s=100" width="100px;" alt=""/><br /><sub><b>0xflotus</b></sub></a><br /><a href="#content-0xflotus" title="Content">🖋</a></td>
   </tr>
   <tr>
@@ -1552,6 +1555,45 @@ Thanks goes to these wonderful people who have contributed to this repository!
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/AustrisC"><img src="https://avatars2.githubusercontent.com/u/12381652?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AustrisC</b></sub></a><br /><a href="#content-AustrisC" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/cisco0808"><img src="https://avatars0.githubusercontent.com/u/60251188?v=4?s=100" width="100px;" alt=""/><br /><sub><b>kyeongtae kim</b></sub></a><br /><a href="#translation-cisco0808" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://keybase.io/651z9pz968v2accj"><img src="https://avatars.githubusercontent.com/u/65741741?v=4?s=100" width="100px;" alt=""/><br /><sub><b>007</b></sub></a><br /><a href="#content-6gx7iycn53ioq2e8apk1j1ypwov4giui" title="Content">🖋</a></td>
+    <td align="center"><a href="http://www.anediaz.com"><img src="https://avatars.githubusercontent.com/u/17216937?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ane Diaz de Tuesta</b></sub></a><br /><a href="#translation-anediaz" title="Translation">🌍</a> <a href="#content-anediaz" title="Content">🖋</a></td>
+    <td align="center"><a href="http://yukioh.net"><img src="https://avatars.githubusercontent.com/u/23182489?v=4?s=100" width="100px;" alt=""/><br /><sub><b>YukiOta</b></sub></a><br /><a href="#translation-YukiOta" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://www.yeovilhospital.co.uk/"><img src="https://avatars.githubusercontent.com/u/43814140?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Frazer Smith</b></sub></a><br /><a href="#content-Fdawgs" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/rluvaton"><img src="https://avatars.githubusercontent.com/u/16746759?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Raz Luvaton</b></sub></a><br /><a href="#content-rluvaton" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/YA21"><img src="https://avatars.githubusercontent.com/u/37298463?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yuta Azumi</b></sub></a><br /><a href="#content-YA21" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/andrewjbarbour"><img src="https://avatars.githubusercontent.com/u/77080074?v=4?s=100" width="100px;" alt=""/><br /><sub><b>andrewjbarbour</b></sub></a><br /><a href="#content-andrewjbarbour" title="Content">🖋</a></td>
+    <td align="center"><a href="https://MasujimaRyohei.jp"><img src="https://avatars.githubusercontent.com/u/17163541?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mr</b></sub></a><br /><a href="#content-MasujimaRyohei" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/kubanac95"><img src="https://avatars.githubusercontent.com/u/16191931?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aleksandar</b></sub></a><br /><a href="#content-kubanac95" title="Content">🖋</a></td>
+    <td align="center"><a href="http://vincentjonathan.com"><img src="https://avatars.githubusercontent.com/u/32597776?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Owl</b></sub></a><br /><a href="#content-SuspiciousLookingOwl" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/yedidyas"><img src="https://avatars.githubusercontent.com/u/36074789?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yedidya Schwartz</b></sub></a><br /><a href="#content-yedidyas" title="Content">🖋</a> <a href="#example-yedidyas" title="Examples">💡</a></td>
+    <td align="center"><a href="https://github.com/ariel-diaz"><img src="https://avatars.githubusercontent.com/u/20423540?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ari</b></sub></a><br /><a href="#content-ariel-diaz" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://www.koenigthomas.de/"><img src="https://avatars.githubusercontent.com/u/7080389?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thomas König</b></sub></a><br /><a href="#content-Vispercept" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/coocos"><img src="https://avatars.githubusercontent.com/u/1397804?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kalle Lämsä</b></sub></a><br /><a href="#content-coocos" title="Content">🖋</a></td>
+    <td align="center"><a href="http://math.cat"><img src="https://avatars.githubusercontent.com/u/10328430?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Wyatt</b></sub></a><br /><a href="#content-ZhyMC" title="Content">🖋</a></td>
+    <td align="center"><a href="http://libkhadir.fr"><img src="https://avatars.githubusercontent.com/u/45130488?v=4?s=100" width="100px;" alt=""/><br /><sub><b>KHADIR Tayeb</b></sub></a><br /><a href="#content-tkhadir" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/shankarregmi"><img src="https://avatars.githubusercontent.com/u/7703345?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shankar Regmi</b></sub></a><br /><a href="#content-shankarregmi" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/codebyshubham"><img src="https://avatars.githubusercontent.com/u/10389723?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shubham</b></sub></a><br /><a href="#content-codebyshubham" title="Content">🖋</a></td>
+    <td align="center"><a href="http://lucalves.me/"><img src="https://avatars.githubusercontent.com/u/17712401?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lucas Alves</b></sub></a><br /><a href="#content-lucalves" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/benjaminudoh10"><img src="https://avatars.githubusercontent.com/u/9018331?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Benjamin</b></sub></a><br /><a href="#content-benjaminudoh10" title="Content">🖋</a></td>
+    <td align="center"><a href="https://www.yjoer.com"><img src="https://avatars.githubusercontent.com/u/47742486?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yeoh Joer</b></sub></a><br /><a href="#content-yjoer" title="Content">🖋</a></td>
+    <td align="center"><a href="https://blog.miigon.net"><img src="https://avatars.githubusercontent.com/u/16161991?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Miigon</b></sub></a><br /><a href="#content-Miigon" title="Content">🖋</a></td>
+    <td align="center"><a href="http://brainstorage.me/Egregor2011"><img src="https://avatars.githubusercontent.com/u/3630318?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rostislav Bogorad</b></sub></a><br /><a href="#content-Egregor2011" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/Flouse"><img src="https://avatars.githubusercontent.com/u/1297478?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Flouse</b></sub></a><br /><a href="#content-Flouse" title="Content">🖋</a></td>
+    <td align="center"><a href="http://taranttini.com"><img src="https://avatars.githubusercontent.com/u/6922125?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tarantini Pereira</b></sub></a><br /><a href="#content-taranttini" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/kzmat"><img src="https://avatars.githubusercontent.com/u/34614358?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kazuki Matsuo</b></sub></a><br /><a href="#content-kzmat" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/burkybang"><img src="https://avatars.githubusercontent.com/u/927886?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adam Smith</b></sub></a><br /><a href="#content-burkybang" title="Content">🖋</a></td>
+    <td align="center"><a href="https://codekodo.tistory.com"><img src="https://avatars.githubusercontent.com/u/33795856?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dohyeon Ko</b></sub></a><br /><a href="#content-k906506" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/vlad99902"><img src="https://avatars.githubusercontent.com/u/67615003?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vladislav Legkov</b></sub></a><br /><a href="#content-vlad99902" title="Content">🖋</a></td>
+    <td align="center"><a href="http://kerolloz.github.io"><img src="https://avatars.githubusercontent.com/u/36763164?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kerollos Magdy</b></sub></a><br /><a href="#content-kerolloz" title="Content">🖋</a></td>
   </tr>
 </table>
 
