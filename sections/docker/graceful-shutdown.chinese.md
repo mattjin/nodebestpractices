@@ -9,7 +9,7 @@
 <br/><br/>
 
 
-### 代码示例 – 让Node.js作为根进程使发送信号给程序成为可能(见 [bootstrap using node](./bootstrap-using-node.chinese.md))
+### 代码示例 – 让Node.js作为根进程使发送信号给程序成为可能（见 [bootstrap using node](./bootstrap-using-node.chinese.md)）
 
 <details>
 
