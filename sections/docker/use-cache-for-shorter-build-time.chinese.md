@@ -24,27 +24,28 @@ LABEL build_number="483"
 #... Dockerfile剩余部分
 ```
 
-#### Have a good .dockerignore file
+#### 有一个不错的.dockerignore文件 Have a good .dockerignore file
 
-[**See: On the importance of docker ignore**](./docker-ignore.md)
+[**见: 论docker ignore的重要性**](./docker-ignore.md)
 
-The docker ignore avoids copying files that could bust our cache logic, like tests results reports, logs or temporary files.
+docker ignore避免复制可能破坏缓存逻辑的文件，如测试结果报告、日志或临时文件。
 
-#### Install "system" packages first
+#### 首先安装“系统”包
 
+建议创建一个包含您使用的所有系统包的基础docker镜像。如果**确实**需要使用`apt`、`yum`、`apk`等安装包，这应该是首批命令中的一个。您肯定不希望每次构建node应用程序时都重新安装make、gcc或g++。
 It is recommended to create a base docker image that has all the system packages you use. If you **really** need to install packages using `apt`,`yum`,`apk` or the likes, this should be one of the first instructions. You don't want to reinstall make,gcc or g++ every time you build your node app.
-**Do not install package only for convenience, this is a production app.**
+**不要只为了方便而安装包，这可是一个生产应用程序。**
 
-#### First, only ADD your package.json and your lockfile
+#### 首先，仅仅ADD您的package.json和lockfile文件
 
 ```Dockerfile
 COPY "package.json" "package-lock.json" "./"
 RUN npm ci
 ```
 
-The lockfile and the package.json change less often. Copying them first will keep the `npm install` step in the cache, this saves precious time. 
+package.json和lockfile文件经常改变很少。首先拷贝它们，会保证`npm install`步骤会被缓存，节省宝贵的时间。The lockfile and the package.json change less often. Copying them first will keep the `npm install` step in the cache, this saves precious time. 
 
-### Then copy your files and run build step (if needed) 
+### 然后，拷贝您的文件，并运行构建步骤（如果需要）Then copy your files and run build step (if needed) 
 
 ```Dockerfile
 COPY . .
@@ -53,9 +54,9 @@ RUN npm run build
 
 ## 示例
 
-### Basic Example with node_modules needing OS dependencies
+### 需要操作系统依赖项的node_modules基本示例 Basic Example with node_modules needing OS dependencies
 ```Dockerfile
-#Create node image version alias
+# 创建镜像版本别名 Create node image version alias
 FROM node:10.22.0-alpine3.11 as builder
 
 RUN apk add --no-cache \
@@ -82,9 +83,9 @@ CMD ["node", "dist/server.js"]
 ```
 
 
-### Example with a build step (when using typescript for example)
+### 有一个构建步骤的示例（例如使用了typescript）Example with a build step (when using typescript for example)
 ```Dockerfile
-#Create node image version alias
+# 创建镜像版本别名 Create node image version alias
 FROM node:10.22.0-alpine3.11 as builder
 
 RUN apk add --no-cache \
@@ -105,7 +106,7 @@ FROM node as app
 
 USER node
 WORKDIR /app
-# Only copying the files that we need
+# 仅仅拷贝我们需要的文件 Only copying the files that we need
 COPY --from=builder /app/node_modules node_modules
 COPY --from=builder /app/package.json .
 COPY --from=builder /app/dist dist
@@ -114,6 +115,6 @@ RUN npm prune --production
 CMD ["node", "dist/server.js"]
 ```
 
-## Useful links
+## 有用的链接 Useful links
 
-Docker docs: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache
+Docker文档: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache
