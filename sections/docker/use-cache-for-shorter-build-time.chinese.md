@@ -115,6 +115,6 @@ RUN npm prune --production
 CMD ["node", "dist/server.js"]
 ```
 
-## 有用的链接 Useful links
+## 有用的链接
 
 Docker文档: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache
